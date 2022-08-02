@@ -1,0 +1,23 @@
+table.tableContent {
+  border-collapse: collapse;
+  max-width: 100%;
+  margin: auto;
+}
+
+th {
+  text-align: center;
+  padding: 15px;
+  border-bottom: 1.5px solid #ddd;
+}
+
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+  background-color: var(--azulSecundario);
+  transform: scale(1.005);
+  transition: all 0.1s;
+}

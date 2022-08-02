@@ -1,0 +1,71 @@
+div.containerCadastro {
+  max-width: 100vw;
+  height: 100%;
+  font-size: 1rem;
+  font-family: sans-serif;
+  padding-bottom: 60px;
+}
+
+div.primeiroItemCadastro {
+  flex: 1;
+  position: relative;
+  top: 100px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+div.cadastroForm {
+  position: relative;
+  background-color: var(--corMenu2);
+  border-radius: 5px;
+  padding: 3rem;
+  margin-top: 40px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+.input-container input {
+  padding: 10px;
+  width: 20rem;
+  border-radius: 8px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+.button-container button {
+  background: var(--azulPrincipal);
+  border-radius: 10px;
+  border: solid 1px var(--corMenu);
+  padding: 10px;
+  font-size: 18px;
+}
+.button-container button:hover {
+  background: var(--azulPrincipal2);
+  border-radius: 10px;
+  transition: all 0.1s;
+}
+
+@media (max-width: 650px) {
+  .containerCadastro {
+    margin-top: 200px;
+  }
+  .input-container input {
+    padding: 10px;
+    width: 15rem;
+  }
+}
+
+:root {
+  --azulPrincipal: rgb(147, 189, 237);
+  --azulPrincipal2: rgb(176, 195, 217);
+  --corMenu: rgb(49, 48, 48);
+  --corMenu2: rgb(122, 118, 118);
+}
