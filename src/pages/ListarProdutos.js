@@ -6,10 +6,11 @@ import '../styles/main.css';
 import { FaPlus } from "react-icons/fa";
 
 //paginas e componentes
-import Table from '../components/Table';
+import Table from '../components/TableAdmin';
 
 
 function ListarProdutos() {
+
 
     return (
         <div className="containerMain" >

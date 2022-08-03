@@ -94,40 +94,6 @@ div.card3 {
   margin-top: 10px;
 }
 
-#editarbtn {
-  margin: 20px 0 10px 0;
-  background: var(--azulPrincipal);
-  border-radius: 10px;
-  border: solid 1px var(--corMenu);
-  padding: 5px;
-  font-size: 0.8rem;
-  float: right;
-  cursor: pointer;
-}
-#editarbtn:hover {
-  background: var(--azulPrincipal2);
-  border-radius: 10px;
-  transition: all 0.1s;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-#deletarbtn {
-  margin: 20px 0 10px 0;
-  background: var(--vermelhoDelet);
-  border-radius: 10px;
-  border: solid 1px var(--corMenu);
-  padding: 5px;
-  font-size: 0.8rem;
-  float: left;
-  cursor: pointer;
-}
-#deletarbtn:hover {
-  background: var(--vermelhoDeletClaro);
-  border-radius: 10px;
-  transition: all 0.1s;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
 @media (max-width: 650px) {
   .cardContainer {
     flex-direction: column;

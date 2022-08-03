@@ -8,17 +8,6 @@ import headphone from '../img/headphone.jpg';
 
 function Produtos() {
 
-    function editarProduto() {
-
-        alert('Editado com sucesso');
-
-    }
-
-    function deletarProduto() {
-
-        alert('Produto deletado');
-
-    }
 
     return (
 
@@ -41,8 +30,6 @@ function Produtos() {
                             <p>Preço do produto</p>
                             <p>Descrição do produto</p>
                         </div>
-                        <button onClick={editarProduto} id='editarbtn'> EDITAR </button>
-                        <button onClick={deletarProduto} id='deletarbtn'> EXCLUIR </button>
                     </div>
 
                     <div className="card2">
@@ -55,8 +42,6 @@ function Produtos() {
                             <p>Preço do produto 2</p>
                             <p>Descrição do produto 2</p>
                         </div>
-                        <button onClick={editarProduto} id='editarbtn'> EDITAR </button>
-                        <button onClick={deletarProduto} id='deletarbtn'> EXCLUIR </button>
                     </div>
 
 
@@ -70,8 +55,6 @@ function Produtos() {
                             <p>Preço do produto 3</p>
                             <p>Descrição do produto 3</p>
                         </div>
-                        <button onClick={editarProduto} id='editarbtn'> EDITAR </button>
-                        <button onClick={deletarProduto} id='deletarbtn'> EXCLUIR </button>
                     </div>
                 </div>
 
@@ -87,8 +70,6 @@ function Produtos() {
                             <p>Preço do produto</p>
                             <p>Descrição do produto</p>
                         </div>
-                        <button onClick={editarProduto} id='editarbtn'> EDITAR </button>
-                        <button onClick={deletarProduto} id='deletarbtn'> EXCLUIR </button>
                     </div>
 
                     <div className="card2">
@@ -101,8 +82,6 @@ function Produtos() {
                             <p>Preço do produto 2</p>
                             <p>Descrição do produto 2</p>
                         </div>
-                        <button onClick={editarProduto} id='editarbtn'> EDITAR </button>
-                        <button onClick={deletarProduto} id='deletarbtn'> EXCLUIR </button>
                     </div>
 
 
@@ -116,8 +95,6 @@ function Produtos() {
                             <p>Preço do produto 3</p>
                             <p>Descrição do produto 3</p>
                         </div>
-                        <button onClick={editarProduto} id='editarbtn'> EDITAR </button>
-                        <button onClick={deletarProduto} id='deletarbtn'> EXCLUIR </button>
                     </div>
                 </div>
             </div>

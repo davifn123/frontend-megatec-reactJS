@@ -14,11 +14,11 @@ function Cadastro() {
     const [password, setPassword] = useState('');
     const [confirmPass, setConfirmPass] = useState('');
     const [cpf, setCpf] = useState('');
-    const [cep, setCep] = useState('');
+    const [nome, setNome] = useState('');
 
     function submitCadastro() {
 
-        if (email === '' || password === '' || confirmPass === '' || confirmPass !== password || cpf === '' || cep === '') {
+        if (nome === '' || email === '' || password === '' || confirmPass === '' || confirmPass !== password || cpf === '') {
             alert('CADASTRO INVÁLIDO');
         } else {
             alert('CADASTRO EFETUADO!');
@@ -41,6 +41,12 @@ function Cadastro() {
                     <form>
                         <div className="input-container">
 
+                            <input type="text" name="nome" placeholder="Nome"
+                                value={nome} onChange={(e) => setNome(e.target.value)} required />
+
+                        </div>
+                        <div className="input-container">
+
                             <input type="email" name="email" placeholder="E-mail"
                                 value={email} onChange={(e) => setEmail(e.target.value)} required />
 
@@ -59,14 +65,8 @@ function Cadastro() {
                         </div>
                         <div className="input-container">
 
-                            <input type="number" name="cpf" placeholder="CPF ou CNPJ"
+                            <input type="number" name="cpf" placeholder="CPF"
                                 value={cpf} onChange={(e) => setCpf(e.target.value)} required />
-
-                        </div>
-                        <div className="input-container">
-
-                            <input type="number" name="cep" placeholder="CEP"
-                                value={cep} onChange={(e) => setCep(e.target.value)} required />
 
                         </div>
 
