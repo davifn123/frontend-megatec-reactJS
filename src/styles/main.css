@@ -11,9 +11,9 @@ div.containerMain {
 div.primeiroItemMain {
   flex: 1;
   position: relative;
-  display: grid;
+  display: flex;
   top: 90px;
-  justify-content: end;
+  justify-content: space-around;
 }
 
 #cadastrarprodbtn {

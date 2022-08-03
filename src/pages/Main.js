@@ -20,7 +20,7 @@ function Main() {
         <div className="containerMain" >
 
             <div className="primeiroItemMain"  >
-                {/* <Link to={'/cadastrarProdutos'} id={'cadastrarprodbtn'}><FaPlus /> Cadastrar Produtos </Link> */}
+
             </div>
 
             <div className="segundoItemMain">

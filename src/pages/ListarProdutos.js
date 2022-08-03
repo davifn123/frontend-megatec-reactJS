@@ -6,7 +6,7 @@ import '../styles/main.css';
 import { FaPlus } from "react-icons/fa";
 
 //paginas e componentes
-import Table from '../components/TableAdmin';
+import TableAdmin from '../components/TableAdmin';
 
 
 function ListarProdutos() {
@@ -17,11 +17,12 @@ function ListarProdutos() {
 
             <div className="primeiroItemMain"  >
                 <Link to={'/cadastrarProdutos'} id={'cadastrarprodbtn'}><FaPlus /> Cadastrar Produtos </Link>
+                <Link to={'/cadastrarFornecedor'} id={'cadastrarprodbtn'}><FaPlus /> Cadastrar Fornecedor </Link>
             </div>
 
             <div className="segundoItemMain">
 
-                <Table />
+                <TableAdmin />
 
             </div>
 

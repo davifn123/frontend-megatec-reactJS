@@ -29,7 +29,7 @@ tr:hover {
   border: solid 1px var(--corMenu);
   padding: 5px;
   font-size: 0.8rem;
-  float: right;
+  float: left;
   cursor: pointer;
 }
 #editarbtn:hover {
@@ -46,7 +46,7 @@ tr:hover {
   border: solid 1px var(--corMenu);
   padding: 5px;
   font-size: 0.8rem;
-  float: left;
+  float: right;
   cursor: pointer;
 }
 #deletarbtn:hover {

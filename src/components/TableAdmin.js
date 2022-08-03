@@ -30,6 +30,7 @@ function TableAdmin() {
                     <th>Quantidade</th>
                     <th>Valor</th>
                     <th>Observação</th>
+                    <th>Fornecedor</th>
                     <th>#</th>
                 </tr>
                 <tr>
@@ -38,6 +39,7 @@ function TableAdmin() {
                     <td>Cadeira</td>
                     <td>R$600.50</td>
                     <td>Cadeira gamer com assento em couro sintético</td>
+                    <td></td>
                     <td>
                         <button onClick={editarProduto} id='editarbtn'> EDITAR </button>
                         <button onClick={deletarProduto} id='deletarbtn'> EXCLUIR </button>
