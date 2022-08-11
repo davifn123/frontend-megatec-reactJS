@@ -1,7 +1,7 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
+import axios from "axios";
 import { useForm } from 'react-hook-form';
 
 //estilos e imagens
@@ -36,11 +36,11 @@ function CadastrarProdutos() {
 
     const addPost = data => axios.post("https://megatec-store.herokuapp.com/api/produtos", data)
         .then(() => {
-            alert("Incluido com sucesso")
+            alert("Cadastrado com sucesso!")
             navigate('/listarProdutos');
         })
         .catch(() => {
-            alert("Registro não incluido")
+            alert("Erro ao cadastrar!")
         })
 
 
