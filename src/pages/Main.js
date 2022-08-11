@@ -9,7 +9,7 @@ import '../styles/main.css';
 
 
 //paginas e componentes
-import Table from '../components/Table'
+
 
 
 function Main() {
@@ -20,13 +20,13 @@ function Main() {
         <div className="containerMain" >
 
             <div className="primeiroItemMain"  >
-
+                <h1>Sistema Megatec Store</h1>
             </div>
 
             <div className="segundoItemMain">
 
-                <Table />
 
+                <h2>Faça login para continuar</h2>
             </div>
 
         </div>

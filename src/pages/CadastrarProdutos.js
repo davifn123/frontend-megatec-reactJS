@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 
 import axios from "axios";
-import { useForm } from 'react-hook-form';
+import { get, useForm } from 'react-hook-form';
 
 //estilos e imagens
 import '../styles/cadastrarProdutos.css'
+import { getValue } from "@testing-library/user-event/dist/utils";
 
 //paginas
 
@@ -22,6 +23,7 @@ function CadastrarProdutos() {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
+    const [posts, setPosts] = useState([]);
 
     // function submitProduto() {
     //     if (nomeProduto === '' || descricaoProduto === '' || cateProduto === '' || precoProd === '') {
@@ -44,6 +46,17 @@ function CadastrarProdutos() {
         })
 
 
+    useEffect(() => {
+        axios.get("https://megatec-store.herokuapp.com/api/fornecedores/listarTodosFornecedores")
+            .then((resp) => {
+                setPosts(resp.data)
+            })
+            .catch(() => {
+                console.log("Erro!!");
+            });
+    }, [])
+
+
 
     return (
         <div className="containerCadastrarProdutos">
@@ -53,13 +66,24 @@ function CadastrarProdutos() {
 
                     <h1>Inserir Novo Produto</h1>
                     <form onSubmit={handleSubmit(addPost)}>
+
                         <div className="input-containerproduto">
+                            <label for="cnpj_fornecedor">CNPJ </label>
+                            <select id="cnpj_fornecedor" name="cnpj_fornecedor"  >
 
-                            <input type="text" name="cnpj_fornecedor"
-                                {...register("cnpj_fornecedor")} placeholder="CNPJ do Fornecedor"
-                                value={cnpjForne} onChange={(e) => setCnpjForne(e.target.value)} required />
+                                {posts.map((post, key) => {
 
+                                    return (
+
+                                        <option value="cnpj_fornecedor"{...register("cnpj_fornecedor")} key={key}>{post.cnpj_fornecedor}</option>
+
+                                    )
+                                })}
+
+                            </select>
                         </div>
+
+
                         <div className="input-containerproduto">
 
                             <input type="text" name="nome_produto"

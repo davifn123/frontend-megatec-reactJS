@@ -14,6 +14,7 @@ import Produtos from '../pages/Produtos';
 import CadastrarProdutos from '../pages/CadastrarProdutos';
 import ListarProdutos from '../pages/ListarProdutos';
 import CadastrarFornecedor from '../pages/CadastrarFornecedor';
+import ListarFornecedor from '../pages/ListarFornecedor';
 
 function Menu() {
 
@@ -110,6 +111,7 @@ function Menu() {
                 <Route path='/cadastrarProdutos' element={<CadastrarProdutos />} />
                 <Route path='/listarProdutos' element={<ListarProdutos />} />
                 <Route path='/cadastrarFornecedor' element={<CadastrarFornecedor />} />
+                <Route path='/listarFornecedor' element={<ListarFornecedor />} />
             </Routes>
 
         </BrowserRouter >

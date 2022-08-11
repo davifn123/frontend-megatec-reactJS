@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import '../styles/tableAdmin.css'
 
 
-function TableAdmin() {
+function TableProduto() {
 
     function editarProduto() {
 
@@ -126,4 +126,4 @@ function TableAdmin() {
         </div>
     );
 }
-export default TableAdmin;
+export default TableProduto;
