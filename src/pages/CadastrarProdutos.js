@@ -69,7 +69,7 @@ function CadastrarProdutos() {
 
                         <div className="input-containerproduto">
                             <label for="cnpj_fornecedor">CNPJ </label>
-                            <select id="cnpj_fornecedor" name="cnpj_fornecedor"  >
+                            <select id="cnpj" name="cnpj_fornecedor"  >
 
                                 {posts.map((post, key) => {
 
