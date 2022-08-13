@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { FaArrowUp } from "react-icons/fa";
 
+
+import '../styles/BackToTopButton.css'
+
 function BackToTopButton() {
 
     const [backToTopButton, setBackToTopButton] = useState(false);
@@ -25,14 +28,14 @@ function BackToTopButton() {
     return (
         <div className="Main">
             {backToTopButton && (
-                <button style={{
+                <button id="topbtn" style={{
                     position: "fixed",
                     bottom: "50px",
                     right: "50px ",
                     height: "50px",
                     fontSize: "50px",
                     borderRadius: "50px",
-                    zIndex: "3",
+                    zIndex: "3"
                 }}
                     onClick={scrollUp}
                 > <FaArrowUp /></button>

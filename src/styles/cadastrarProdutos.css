@@ -35,6 +35,16 @@ div.cadastrarProdutoForm {
   margin: 20px;
 }
 
+.input-containerproduto label {
+  color: #fff;
+}
+
+.input-containerproduto select#cnpj {
+  padding: 13px;
+  width: 20rem;
+  border-radius: 1px;
+}
+
 .input-containerproduto input {
   padding: 13px;
   width: 35rem;

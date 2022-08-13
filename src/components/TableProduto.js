@@ -8,17 +8,8 @@ import '../styles/tableAdmin.css'
 
 function TableProduto() {
 
-    function editarProduto() {
 
-        alert('Editado com sucesso');
 
-    }
-
-    function deletarProduto() {
-
-        alert('Produto deletado');
-
-    }
 
 
     const [posts, setPosts] = useState([]);
@@ -32,7 +23,25 @@ function TableProduto() {
             });
     }, [])
 
+    function editarProduto() {
 
+        alert('Editado com sucesso');
+
+    }
+
+    function deletarProduto(id) {
+
+        axios.delete(`https://megatec-store.herokuapp.com/api/produtos/${id}`)
+            .then(() => {
+                alert("Produto DELETADO com sucesso!")
+            })
+            .catch(() => {
+                alert("ERRO AO DELETAR")
+            })
+
+        setPosts(posts.filter(post => post.id !== id))
+
+    }
 
     return (
 
@@ -63,7 +72,7 @@ function TableProduto() {
                                 <td> {post.cnpj_fornecedor} </td>
                                 <td>
                                     <button onClick={editarProduto} id='editarbtn'> EDITAR </button>
-                                    <button onClick={deletarProduto} id='deletarbtn'> EXCLUIR </button>
+                                    <button onClick={() => deletarProduto(post.id)} id='deletarbtn'> EXCLUIR </button>
                                 </td>
                             </tr>
                         </tbody>

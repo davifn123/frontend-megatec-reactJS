@@ -6,7 +6,7 @@ import { get, useForm } from 'react-hook-form';
 
 //estilos e imagens
 import '../styles/cadastrarProdutos.css'
-import { getValue } from "@testing-library/user-event/dist/utils";
+
 
 //paginas
 
@@ -68,14 +68,14 @@ function CadastrarProdutos() {
                     <form onSubmit={handleSubmit(addPost)}>
 
                         <div className="input-containerproduto">
-                            <label for="cnpj_fornecedor">CNPJ </label>
+                            <label for="cnpj_fornecedor">CNPJ do Fornecedor </label>
                             <select id="cnpj" name="cnpj_fornecedor"  >
 
                                 {posts.map((post, key) => {
 
                                     return (
 
-                                        <option value="cnpj_fornecedor"{...register("cnpj_fornecedor")} key={key}>{post.cnpj_fornecedor}</option>
+                                        <option  {...register("cnpj_fornecedor")} key={key}>{post.cnpj_fornecedor}</option>
 
                                     )
                                 })}

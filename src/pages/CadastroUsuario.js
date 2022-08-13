@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import '../styles/cadastro.css';
 
 
-function Cadastro() {
+function CadastroUsuario() {
 
     var navigate = useNavigate();
 
@@ -80,4 +80,4 @@ function Cadastro() {
         </div>
     );
 }
-export default Cadastro;
+export default CadastroUsuario;

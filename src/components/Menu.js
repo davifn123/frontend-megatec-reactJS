@@ -9,7 +9,7 @@ import { FaBars, FaSearch, FaUser } from 'react-icons/fa'
 //importação de paginas
 import Main from '../pages/Main';
 import Login from '../pages/Login';
-import Cadastro from '../pages/Cadastro';
+import CadastroUsuario from '../pages/CadastroUsuario';
 import Produtos from '../pages/Produtos';
 import CadastrarProdutos from '../pages/CadastrarProdutos';
 import ListarProdutos from '../pages/ListarProdutos';
@@ -106,7 +106,7 @@ function Menu() {
             <Routes>
                 <Route path="/" element={<Main />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/cadastro" element={<Cadastro />} />
+                <Route path="/cadastro" element={<CadastroUsuario />} />
                 <Route path='/produtos' element={<Produtos />} />
                 <Route path='/cadastrarProdutos' element={<CadastrarProdutos />} />
                 <Route path='/listarProdutos' element={<ListarProdutos />} />
