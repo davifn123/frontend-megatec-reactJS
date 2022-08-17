@@ -78,6 +78,7 @@ li {
 #loginBtn {
   background: rgb(147, 189, 237);
   border-radius: 10px;
+  cursor: pointer;
 }
 
 #loginBtn:hover {

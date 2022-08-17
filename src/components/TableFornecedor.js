@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 //estilos e imagens
 import '../styles/tableAdmin.css'
@@ -7,16 +8,26 @@ import '../styles/tableAdmin.css'
 
 function TableFornecedor() {
 
+    var navigate = useNavigate();
 
-    function editarProduto() {
+    // function editarProduto() {
 
-        alert('Editado com sucesso');
+    //     alert('Editado com sucesso');
 
-    }
+    // }
 
-    function deletarProduto() {
+    function deletarFornecedor(cnpj_fornecedor) {
 
-        alert('Produto deletado');
+
+        axios.delete(`https://megatec-store.herokuapp.com/api/fornecedores/${cnpj_fornecedor}`)
+            .then(() => {
+                alert(`Fornecedor ${cnpj_fornecedor} DELETADO com sucesso!`)
+            })
+            .catch(() => {
+                alert("ERRO AO DELETAR")
+            })
+
+        setPosts(posts.filter(post => post.cnpj_fornecedor !== cnpj_fornecedor))
 
     }
 
@@ -39,28 +50,35 @@ function TableFornecedor() {
 
         <div className="tableMain">
             <table className="tableContent" >
-                <tr>
-                    <th>CNPJ</th>
-                    <th>Nome do Fornecedor</th>
-                    <th>Email do Fornecedor</th>
-                    <th>Telefone</th>
-                    <th>#</th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>CNPJ</th>
+                        <th>Nome do Fornecedor</th>
+                        <th>Email do Fornecedor</th>
+                        <th>Telefone</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
                 {posts.map((post, key) => {
+
+                    function editarFornecedor() {
+                        navigate(`/editarFornecedor/${post.cnpj_fornecedor}`)
+                    }
 
                     return (
 
-                        <tr key={key}>
-                            <td> {post.cnpj_fornecedor} </td>
-                            <td> {post.nome_fornecedor} </td>
-                            <td> {post.email_fornecedor} </td>
-                            <td> {post.fone_fornecedor}</td>
-                            <td>
-                                <button onClick={editarProduto} id='editarbtn'> EDITAR </button>
-                                <button onClick={deletarProduto} id='deletarbtn'> EXCLUIR </button>
-                            </td>
-                        </tr>
-
+                        <tbody key={key}>
+                            <tr >
+                                <td> {post.cnpj_fornecedor} </td>
+                                <td> {post.nome_fornecedor} </td>
+                                <td> {post.email_fornecedor} </td>
+                                <td> {post.fone_fornecedor} </td>
+                                <td>
+                                    <button onClick={() => editarFornecedor(post.cnpj_fornecedor)} id='editarbtn'> EDITAR </button>
+                                    <button onClick={() => deletarFornecedor(post.cnpj_fornecedor)} id='deletarbtn'> EXCLUIR </button>
+                                </td>
+                            </tr>
+                        </tbody>
                     )
                 })}
             </table>

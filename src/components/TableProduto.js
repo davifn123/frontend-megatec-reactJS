@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 //estilos e imagens
@@ -8,7 +9,7 @@ import '../styles/tableAdmin.css'
 
 function TableProduto() {
 
-
+    var navigate = useNavigate();
 
 
 
@@ -23,11 +24,11 @@ function TableProduto() {
             });
     }, [])
 
-    function editarProduto() {
+    // function editarProduto() {
 
-        alert('Editado com sucesso');
+    //     alert('Editado com sucesso');
 
-    }
+    // }
 
     function deletarProduto(id) {
 
@@ -42,6 +43,8 @@ function TableProduto() {
         setPosts(posts.filter(post => post.id !== id))
 
     }
+
+
 
     return (
 
@@ -58,12 +61,17 @@ function TableProduto() {
                         <th>#</th>
                     </tr>
                 </thead>
+
                 {posts.map((post, key) => {
+
+                    function editarProduto() {
+                        navigate(`/editarProdutos/${post.id}`)
+                    }
 
                     return (
 
-                        <tbody>
-                            <tr key={key}>
+                        <tbody key={key}>
+                            <tr >
                                 <td> {post.id} </td>
                                 <td> {post.nome_produto} </td>
                                 <td> {post.quantidade_produto} </td>
@@ -71,7 +79,7 @@ function TableProduto() {
                                 <td> {post.obs_produto} </td>
                                 <td> {post.cnpj_fornecedor} </td>
                                 <td>
-                                    <button onClick={editarProduto} id='editarbtn'> EDITAR </button>
+                                    <button onClick={() => editarProduto(post.id)} id='editarbtn'> EDITAR </button>
                                     <button onClick={() => deletarProduto(post.id)} id='deletarbtn'> EXCLUIR </button>
                                 </td>
                             </tr>

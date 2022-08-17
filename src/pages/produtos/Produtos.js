@@ -2,10 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 //estilos e imagens
-import cadeiraGamer from '../img/cadeiraGamer.jpg';
-import headphone from '../img/headphone.jpg';
-import notebookAsus from '../img/notebookAsus.jpg';
-import '../styles/produtos.css';
+import cadeiraGamer from '../../img/cadeiraGamer.jpg';
+import '../../styles/produtos.css';
 
 function Produtos() {
 

@@ -1,23 +1,26 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
 
 // importação de estilos e imagens
-import '../styles/menu.css'
-import logoAnimada from '../img/logos/LogoMenuFundoEscuroAnimada.gif'
-import { FaBars, FaSearch, FaUser } from 'react-icons/fa'
+import { FaBars, FaSearch, FaSignOutAlt, FaUser } from 'react-icons/fa';
+import logoAnimada from '../img/logos/LogoMenuFundoEscuroAnimada.gif';
+import '../styles/menu.css';
 
 //importação de paginas
-import Main from '../pages/Main';
+import CadastrarFornecedor from '../pages/fornecedor/CadastrarFornecedor';
+import EditarFornecedor from '../pages/fornecedor/EditarFornecedor';
+import ListarFornecedor from '../pages/fornecedor/ListarFornecedor';
 import Login from '../pages/Login';
-import CadastroUsuario from '../pages/CadastroUsuario';
-import Produtos from '../pages/Produtos';
-import CadastrarProdutos from '../pages/CadastrarProdutos';
-import ListarProdutos from '../pages/ListarProdutos';
-import CadastrarFornecedor from '../pages/CadastrarFornecedor';
-import ListarFornecedor from '../pages/ListarFornecedor';
+import Main from '../pages/Main';
+import CadastrarProdutos from '../pages/produtos/CadastrarProdutos';
+import EditarProdutos from '../pages/produtos/EditarProdutos';
+import ListarProdutos from '../pages/produtos/ListarProdutos';
+import Produtos from '../pages/produtos/Produtos';
+import CadastroUsuario from '../pages/usuario/CadastroUsuario';
 
 function Menu() {
 
+    // const navigate = useNavigate();
     const [search, setSearch] = useState('')
 
     function handleSearch() {
@@ -51,8 +54,26 @@ function Menu() {
     }
 
 
+    // const logout = (e) => {
+    //     // 
+    //     localStorage.clear();
+    //     window.location.reload(false);
+
+    // }
+
+    function logout() {
+        // navigate('/main');
+        localStorage.clear();
+
+        setTimeout(() => {
+            window.location.reload(false);
+        }, 500);
+
+
+    }
+
     return (
-        <BrowserRouter>
+        <Router>
             <div className="menu" >
 
                 <div className='dropdown'>
@@ -70,8 +91,13 @@ function Menu() {
                             </li>
 
                             <div className='dropdownContentBtns' >
-                                <Link to={'/login'} id='loginBtn'>LOGIN</Link>
+
+                                {localStorage.getItem("username") !== null && localStorage.getItem("password") !== null ?
+                                    <Link to={'/main'} onClick={logout} id='loginBtn' >SAIR</Link> :
+                                    <Link to={'/login'} id='loginBtn'>LOGIN</Link>}
+
                                 <Link to={'/cadastro'} id='cadastroBtn' >CADASTRO</Link>
+
                             </div>
                         </div>
                     </ul>
@@ -92,8 +118,16 @@ function Menu() {
                     </div>
 
                     <div className='conteudoMenu2'>
-                        <FaUser />
-                        <Link to={'/login'} id='FaUserBtn' >Login</Link>
+
+                        {localStorage.getItem("username") !== null && localStorage.getItem("password") !== null ?
+                            <>  <Link to={'/main'} onClick={logout} id='FaUserBtn' ><FaSignOutAlt /> SAIR</Link></> :
+
+                            <> <FaUser /><Link to={'/login'} id='FaUserBtn' >Login</Link>  </>
+                        }
+
+
+
+
                         <Link to={'/cadastro'} id='cadastroBtnmenu'>Cadastro</Link>
                         {/* <Link to={''} id='Faheadsetbtn'><FaHeadset /></Link>
                         <Link to={'/produtos'} id='Facart'><FaCartPlus /></Link> */}
@@ -105,6 +139,7 @@ function Menu() {
 
             <Routes>
                 <Route path="/" element={<Main />} />
+                <Route path='/main' element={<Main />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/cadastro" element={<CadastroUsuario />} />
                 <Route path='/produtos' element={<Produtos />} />
@@ -112,9 +147,11 @@ function Menu() {
                 <Route path='/listarProdutos' element={<ListarProdutos />} />
                 <Route path='/cadastrarFornecedor' element={<CadastrarFornecedor />} />
                 <Route path='/listarFornecedor' element={<ListarFornecedor />} />
+                <Route path='/editarProdutos/:id' element={<EditarProdutos />} />
+                <Route path='/editarFornecedor/:cnpj_fornecedor' element={<EditarFornecedor />} />
             </Routes>
 
-        </BrowserRouter >
+        </Router >
 
     )
 

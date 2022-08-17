@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 
 
 //estilos e imagens
-import '../styles/cadastrarProdutos.css'
+import '../../styles/cadastrarProdutos.css'
 
 //paginas
 
@@ -20,7 +20,9 @@ function CadastrarFornecedor() {
     const [email_fornecedor, setEmail_fornecedor] = useState('');
     const [fone_fornecedor, setFone_fornecedor] = useState('');
 
+    // eslint-disable-next-line
     const { register, handleSubmit, formState: { errors } } = useForm();
+
 
     // function submitProduto() {
     //     if (nome_fornecedor === '' || cnpj_fornecedor === '' || email_fornecedor === '' || fone_fornecedor === '') {
@@ -38,6 +40,7 @@ function CadastrarFornecedor() {
             navigate('/listarFornecedor');
         })
         .catch(() => {
+
             alert("Erro ao cadastrar!")
         })
 
@@ -59,7 +62,7 @@ function CadastrarFornecedor() {
                         </div>
                         <div className="input-containerproduto">
 
-                            <input type="number" name="cnpj_fornecedor" {...register("cnpj_fornecedor")} placeholder="CNPJ"
+                            <input type="text" name="cnpj_fornecedor" {...register("cnpj_fornecedor")} placeholder="CNPJ"
                                 value={cnpj_fornecedor} onChange={(e) => setCnpj_fornecedor(e.target.value)} required />
 
                         </div>

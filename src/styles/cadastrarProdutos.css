@@ -49,6 +49,7 @@ div.cadastrarProdutoForm {
   padding: 13px;
   width: 35rem;
   border-radius: 8px;
+  outline: none;
 }
 
 .input-containerproduto input:focus {

@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 
 import axios from "axios";
-import { get, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 //estilos e imagens
-import '../styles/cadastrarProdutos.css'
+import '../../styles/cadastrarProdutos.css'
 
 
 //paginas
@@ -19,21 +19,11 @@ function CadastrarProdutos() {
     const [descricaoProduto, setDescricaoproduto] = useState('');
     const [cateProduto, setCateproduto] = useState('');
     const [precoProd, setPrecoprod] = useState('');
-    const [cnpjForne, setCnpjForne] = useState('');
 
+    // eslint-disable-next-line
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const [posts, setPosts] = useState([]);
-
-    // function submitProduto() {
-    //     if (nomeProduto === '' || descricaoProduto === '' || cateProduto === '' || precoProd === '') {
-    //         alert('CADASTRO DO PRODUTO INVÁLIDO');
-    //     } else {
-    //         alert('CADASTRO DO PRODUTO EFETUADO');
-
-    //     }
-
-    // }
 
 
     const addPost = data => axios.post("https://megatec-store.herokuapp.com/api/produtos", data)
@@ -48,8 +38,8 @@ function CadastrarProdutos() {
 
     useEffect(() => {
         axios.get("https://megatec-store.herokuapp.com/api/fornecedores/listarTodosFornecedores")
-            .then((resp) => {
-                setPosts(resp.data)
+            .then((response) => {
+                setPosts(response.data)
             })
             .catch(() => {
                 console.log("Erro!!");
@@ -68,14 +58,14 @@ function CadastrarProdutos() {
                     <form onSubmit={handleSubmit(addPost)}>
 
                         <div className="input-containerproduto">
-                            <label for="cnpj_fornecedor">CNPJ do Fornecedor </label>
-                            <select id="cnpj" name="cnpj_fornecedor"  >
+                            <label >CNPJ do Fornecedor </label>
+                            <select id="cnpj" {...register("cnpj_fornecedor")}>
 
-                                {posts.map((post, key) => {
+                                {posts.map((post) => {
 
                                     return (
 
-                                        <option  {...register("cnpj_fornecedor")} key={key}>{post.cnpj_fornecedor}</option>
+                                        <option  >{post.cnpj_fornecedor}</option>
 
                                     )
                                 })}

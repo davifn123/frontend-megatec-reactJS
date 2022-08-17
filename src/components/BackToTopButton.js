@@ -35,7 +35,8 @@ function BackToTopButton() {
                     height: "50px",
                     fontSize: "50px",
                     borderRadius: "50px",
-                    zIndex: "3"
+                    zIndex: "3",
+                    cursor: "pointer"
                 }}
                     onClick={scrollUp}
                 > <FaArrowUp /></button>
