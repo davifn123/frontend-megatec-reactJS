@@ -61,11 +61,11 @@ function CadastrarProdutos() {
                             <label >CNPJ do Fornecedor </label>
                             <select id="cnpj" {...register("cnpj_fornecedor")}>
 
-                                {posts.map((post) => {
+                                {posts.map((post, key) => {
 
                                     return (
 
-                                        <option  >{post.cnpj_fornecedor}</option>
+                                        <option key={key}  >{post.cnpj_fornecedor}</option>
 
                                     )
                                 })}

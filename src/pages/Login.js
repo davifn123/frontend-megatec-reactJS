@@ -64,9 +64,8 @@ function Login() {
         axios.get("https://megatec-store.herokuapp.com/api/usuarios/listarTodos")
             .then((response) => {
                 setPosts(response.data)
-                console.log(response.data);
-            }).catch(() => {
-                console.log("Erro!!");
+            }).catch((err) => {
+                console.log("Erro!!", err);
             });
     }, [])
 

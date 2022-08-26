@@ -3,7 +3,7 @@ div.containerProdutos {
   height: 100%;
   font-size: 1rem;
   font-family: sans-serif;
-  line-height: 1.4;
+  line-height: 1.5;
   background: linear-gradient(var(--azulPrincipal), var(--azulSecundario));
   padding-bottom: 60px;
 }
@@ -12,7 +12,7 @@ div.primeiroItemProdutos {
   flex: 1;
   position: relative;
   display: grid;
-  top: 90px;
+  top: 88px;
 }
 
 .primeiroItemProdutos h1 {
@@ -60,6 +60,20 @@ div.card1 {
 .cardContent1 {
   padding: 5px 20px;
   margin-top: 10px;
+}
+
+button#buybtn {
+  float: right;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  background-color: rgb(123, 243, 123);
+}
+
+button#buybtn:hover {
+  box-shadow: 0 11px 20px 0 rgba(0, 0, 0, 0.2);
+  background-color: rgb(28, 221, 28);
 }
 
 div.card2 {

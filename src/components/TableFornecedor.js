@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import '../styles/tableAdmin.css'
 
 
+import SearchFornecedor from "./search/SearchFornecedor";
+
 function TableFornecedor() {
 
     var navigate = useNavigate();
@@ -31,58 +33,63 @@ function TableFornecedor() {
 
     }
 
-
+    //#region get
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         axios.get("https://megatec-store.herokuapp.com/api/fornecedores/listarTodosFornecedores")
             .then((resp) => {
                 setPosts(resp.data)
-            }).catch(() => {
-                console.log("Erro!!");
+            }).catch((response) => {
+                console.log("Erro!!", response);
             });
     }, [])
 
-
+    //#endregion get
 
 
     return (
+        <>
+            <p>Insira o Nome do Fornecedor</p>
+            <SearchFornecedor />
 
-        <div className="tableMain">
-            <table className="tableContent" >
-                <thead>
-                    <tr>
-                        <th>CNPJ</th>
-                        <th>Nome do Fornecedor</th>
-                        <th>Email do Fornecedor</th>
-                        <th>Telefone</th>
-                        <th>#</th>
-                    </tr>
-                </thead>
-                {posts.map((post, key) => {
+            <div className="tableMain">
+                <table className="tableContent" >
+                    <thead>
+                        <tr>
+                            <th>CNPJ</th>
+                            <th>Nome do Fornecedor</th>
+                            <th>Email do Fornecedor</th>
+                            <th>Telefone</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
 
-                    function editarFornecedor() {
-                        navigate(`/editarFornecedor/${post.cnpj_fornecedor}`)
-                    }
+                    {posts.map((post, key) => {
 
-                    return (
+                        function editarFornecedor() {
+                            navigate(`/editarFornecedor/${post.cnpj_fornecedor}`)
+                        }
 
-                        <tbody key={key}>
-                            <tr >
-                                <td> {post.cnpj_fornecedor} </td>
-                                <td> {post.nome_fornecedor} </td>
-                                <td> {post.email_fornecedor} </td>
-                                <td> {post.fone_fornecedor} </td>
-                                <td>
-                                    <button onClick={() => editarFornecedor(post.cnpj_fornecedor)} id='editarbtn'> EDITAR </button>
-                                    <button onClick={() => deletarFornecedor(post.cnpj_fornecedor)} id='deletarbtn'> EXCLUIR </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    )
-                })}
-            </table>
-        </div>
-    );
+                        return (
+
+                            <tbody key={key}>
+                                <tr >
+                                    <td> {post.cnpj_fornecedor} </td>
+                                    <td> {post.nome_fornecedor} </td>
+                                    <td> {post.email_fornecedor} </td>
+                                    <td> {post.fone_fornecedor} </td>
+                                    <td>
+                                        <button onClick={() => editarFornecedor(post.cnpj_fornecedor)} id='editarbtn'> EDITAR </button>
+                                        <button onClick={() => deletarFornecedor(post.cnpj_fornecedor)} id='deletarbtn'> EXCLUIR </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        )
+                    })}
+                </table>
+            </div>
+        </>
+    )
 }
 export default TableFornecedor;

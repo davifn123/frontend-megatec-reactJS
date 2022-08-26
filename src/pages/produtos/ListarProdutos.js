@@ -19,6 +19,7 @@ function ListarProdutos() {
                 <Link to={'/cadastrarProdutos'} id={'cadastrarprodbtn'}><FaPlus /> Cadastrar Produtos </Link>
                 <Link to={'/cadastrarFornecedor'} id={'cadastrarprodbtn'}><FaPlus /> Cadastrar Fornecedor </Link>
                 <Link to={'/listarFornecedor'} id={'listarfornbtn'}><FaBars /> Listar Fornecedores </Link>
+
             </div>
 
             <div className="segundoItemMain">

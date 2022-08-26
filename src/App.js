@@ -5,15 +5,19 @@ import './App.css';
 import Menu from './components/Menu';
 import Footer from './components/Footer';
 import BackToTopButton from './components/BackToTopButton';
+import { CartProvider } from './contexts/CartContext/CartContext';
 
 function App() {
+
   return (
 
-    <div>
-      <Menu />
-      <BackToTopButton />
-      <Footer />
-    </div>
+    <CartProvider>
+      <>
+        <Menu />
+        <BackToTopButton />
+        <Footer />
+      </>
+    </CartProvider>
 
   );
 }

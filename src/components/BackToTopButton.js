@@ -28,16 +28,7 @@ function BackToTopButton() {
     return (
         <div className="Main">
             {backToTopButton && (
-                <button id="topbtn" style={{
-                    position: "fixed",
-                    bottom: "50px",
-                    right: "50px ",
-                    height: "50px",
-                    fontSize: "50px",
-                    borderRadius: "50px",
-                    zIndex: "3",
-                    cursor: "pointer"
-                }}
+                <button id="topbtn"
                     onClick={scrollUp}
                 > <FaArrowUp /></button>
             )}

@@ -15,10 +15,6 @@ function EditarProdutos() {
 
     var navigate = useNavigate();
 
-    const [nomeProduto, setNomeproduto] = useState('');
-    const [descricaoProduto, setDescricaoproduto] = useState('');
-    const [cateProduto, setCateproduto] = useState('');
-    const [precoProd, setPrecoprod] = useState('');
 
     // eslint-disable-next-line
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
@@ -63,18 +59,18 @@ function EditarProdutos() {
 
                 <div className="cadastrarProdutoForm">
 
-                    <h1>Inserir Novo Produto</h1>
+                    <h1>Editar Produto</h1>
                     <form onSubmit={handleSubmit(addPost)}>
 
                         <div className="input-containerproduto">
                             <label>CNPJ do Fornecedor </label>
                             <select id="cnpj" {...register("cnpj_fornecedor")} >
 
-                                {posts.map((post) => {
+                                {posts.map((post, key) => {
 
                                     return (
 
-                                        <option >{post.cnpj_fornecedor}</option>
+                                        <option key={key} >{post.cnpj_fornecedor}</option>
 
                                     )
                                 })}
@@ -87,14 +83,14 @@ function EditarProdutos() {
 
                             <input type="text" name="nome_produto"
                                 {...register("nome_produto")} placeholder='Nome do produto'
-                                value={nomeProduto} onChange={(e) => setNomeproduto(e.target.value)} required />
+                                required />
 
                         </div>
                         <div className="input-containerproduto">
 
                             <input type="number" name="quantidade_produto"
                                 {...register("quantidade_produto")} placeholder='Quantidade...'
-                                value={cateProduto} onChange={(e) => setCateproduto(e.target.value)} required />
+                                required />
 
                         </div>
 
@@ -102,14 +98,14 @@ function EditarProdutos() {
 
                             <input type="number" name="valor_produto"
                                 {...register("valor_produto")} placeholder='Valor Produto'
-                                value={precoProd} onChange={(e) => setPrecoprod(e.target.value)} required />
+                                required />
 
                         </div>
                         <div className="input-containerproduto">
 
                             <input type="text" name="obs_produto"
                                 {...register("obs_produto")} placeholder='Descrição'
-                                value={descricaoProduto} onChange={(e) => setDescricaoproduto(e.target.value)} required />
+                                required />
 
                         </div>
 

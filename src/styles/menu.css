@@ -8,7 +8,7 @@
   font-family: sans-serif;
 }
 
-li {
+.menu li {
   list-style: none;
   margin: 20px;
   display: grid;
@@ -18,6 +18,7 @@ li {
   text-decoration: none;
   color: rgb(255, 255, 255);
   padding: 10px;
+  margin: 5px;
 }
 
 .dropdownContent a:hover {
@@ -109,12 +110,14 @@ div.conteudoMenu0 img {
   border-radius: 10px;
   width: 20rem;
   padding: 10px;
+  outline: none;
 }
 .conteudoMenu1 form {
   background-color: #ffff;
   display: flex;
   padding: 2px;
   border-radius: 5px;
+  margin-bottom: 30px;
 }
 
 #btnSearch {
@@ -160,9 +163,10 @@ div.conteudoMenu0 img {
   font-size: 20px;
   margin-left: 30px;
   color: #ffff;
+  float: right;
+  cursor: pointer;
 }
 #Facart:hover {
-  -webkit-transform: scale(1.2);
   transform: scale(1.2);
   transition: all 0.2s;
 }

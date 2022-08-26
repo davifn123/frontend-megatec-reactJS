@@ -2,33 +2,42 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 //estilos e imagens
-import '../styles/tableAdmin.css'
+import '../styles/tableAdmin.css';
 
+import SearchProduto from './search/SearchProduto';
 
 function TableProduto() {
 
-    var navigate = useNavigate();
+    const navigate = useNavigate();
+
+
 
 
 
     const [posts, setPosts] = useState([]);
 
+
+    //#region get todos
+
     useEffect(() => {
         axios.get("https://megatec-store.herokuapp.com/api/produtos")
             .then((response) => {
                 setPosts(response.data)
-            }).catch(() => {
-                console.log("Erro!!");
+
+            })
+            .catch((response) => {
+                console.log("Erro!!", response);
             });
     }, [])
+    //#endregion get todos
 
-    // function editarProduto() {
 
-    //     alert('Editado com sucesso');
 
-    // }
+    //#region get por id search input
+
+    //#endregion get por id search input
+
 
     function deletarProduto(id) {
 
@@ -46,104 +55,62 @@ function TableProduto() {
 
 
 
+
+
     return (
 
-        <div className="tableMain">
-            <table className="tableContent" >
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Produto</th>
-                        <th>Quantidade</th>
-                        <th>Valor</th>
-                        <th>Observação</th>
-                        <th>Fornecedor</th>
-                        <th>#</th>
-                    </tr>
-                </thead>
+        <>
+            <p>Insira o ID do produto</p>
+            <SearchProduto />
 
-                {posts.map((post, key) => {
+            <div className="tableMain">
 
-                    function editarProduto() {
-                        navigate(`/editarProdutos/${post.id}`)
-                    }
+                <table className="tableContent" >
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Produto</th>
+                            <th>Quantidade</th>
+                            <th>Valor</th>
+                            <th>Observação</th>
+                            <th>Fornecedor</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
 
-                    return (
+                    {posts.map((post, key) => {
 
-                        <tbody key={key}>
-                            <tr >
-                                <td> {post.id} </td>
-                                <td> {post.nome_produto} </td>
-                                <td> {post.quantidade_produto} </td>
-                                <td> {`R$ ${post.valor_produto}`}</td>
-                                <td> {post.obs_produto} </td>
-                                <td> {post.cnpj_fornecedor} </td>
-                                <td>
-                                    <button onClick={() => editarProduto(post.id)} id='editarbtn'> EDITAR </button>
-                                    <button onClick={() => deletarProduto(post.id)} id='deletarbtn'> EXCLUIR </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    )
-                })}
-            </table>
-            {/* <table className="tableContent">
-                <tr>
-                    <th>ID</th>
-                    <th>Produto</th>
-                    <th>Quantidade</th>
-                    <th>Valor</th>
-                    <th>Observação</th>
-                    <th>Fornecedor</th>
-                    <th>#</th>
-                </tr>
-                <tr>
-                    <td> { } </td>
-                    <td>Cadeira Gamer </td>
-                    <td>Cadeira</td>
-                    <td>R$600.50</td>
-                    <td>Cadeira gamer com assento em couro sintético</td>
-                    <td></td>
-                    <td>
-                        <button onClick={editarProduto} id='editarbtn'> EDITAR </button>
-                        <button onClick={deletarProduto} id='deletarbtn'> EXCLUIR </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>HeadPhone philco</td>
-                    <td>Fones de ouvido</td>
-                    <td>R$150</td>
-                    <td>Fone de ouvido extra auricular</td>
-                    <td>
-                        <button onClick={editarProduto} id='editarbtn'> EDITAR </button>
-                        <button onClick={deletarProduto} id='deletarbtn'> EXCLUIR </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Nome do produto</td>
-                    <td>Categoria do produto</td>
-                    <td>Preço do Produto</td>
-                    <td>Descrição do produto</td>
-                    <td>
-                        <button onClick={editarProduto} id='editarbtn'> EDITAR </button>
-                        <button onClick={deletarProduto} id='deletarbtn'> EXCLUIR </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Nome do produto</td>
-                    <td>Categoria do produto</td>
-                    <td>Preço do produto</td>
-                    <td>Descrição do produto</td>
-                    <td>
-                        <button onClick={editarProduto} id='editarbtn'> EDITAR </button>
-                        <button onClick={deletarProduto} id='deletarbtn'> EXCLUIR </button>
-                    </td>
-                </tr>
-            </table> */}
-        </div>
+                        function editarProduto() {
+                            navigate(`/editarProdutos/${post.id}`)
+                        }
+
+                        return (
+
+                            <tbody key={key}>
+                                <tr >
+                                    <td> {post.id} </td>
+                                    <td> {post.nome_produto} </td>
+                                    <td> {post.quantidade_produto} </td>
+                                    <td> {`R$ ${post.valor_produto}`}</td>
+                                    <td> {post.obs_produto} </td>
+                                    <td> {post.cnpj_fornecedor} </td>
+                                    <td>
+                                        <button onClick={() => editarProduto(post.id)} id='editarbtn'> EDITAR </button>
+                                        <button onClick={() => deletarProduto(post.id)} id='deletarbtn'> EXCLUIR </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        )
+                    })}
+
+                </table>
+
+
+            </div>
+
+
+        </>
     );
+
 }
 export default TableProduto;

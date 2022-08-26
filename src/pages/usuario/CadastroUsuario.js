@@ -36,6 +36,7 @@ function CadastroUsuario() {
     // eslint-disable-next-line
     const { register, handleSubmit, formState: { errors } } = useForm();
 
+    //#region post
     const addPost = data => axios.post("https://megatec-store.herokuapp.com/api/usuarios", data)
         .then(() => {
             alert("Cadastrado com sucesso!")
@@ -47,7 +48,7 @@ function CadastroUsuario() {
             }
             alert("Erro ao cadastrar!")
         })
-
+    //#endregion post
 
     return (
         <div className="containerCadastro">
@@ -65,16 +66,11 @@ function CadastroUsuario() {
                         </div>
                         <div className="input-container">
 
-                            <input type="number" name="cpf" {...register("cpfUsuario")} placeholder="CPF"
+                            <input type="number" name="cpf" {...register("usuarioId.cpfUsuario")} placeholder="CPF"
                                 value={cpf} onChange={(e) => setCpf(e.target.value)} required />
 
                         </div>
-                        <div className="input-container">
 
-                            <input type="number" name="id" {...register("usuarioId.id")} placeholder="ID"
-                                required />
-
-                        </div>
                         <div className="input-container">
 
                             <input type="number" name="codEmpresa" {...register("usuarioId.codEmpresa")} placeholder="Código da Empresa"

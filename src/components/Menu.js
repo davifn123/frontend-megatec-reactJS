@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
 
 // importação de estilos e imagens
-import { FaBars, FaSearch, FaSignOutAlt, FaUser } from 'react-icons/fa';
+import { FaBars, FaCartPlus, FaSignOutAlt, FaUser } from 'react-icons/fa';
 import logoAnimada from '../img/logos/LogoMenuFundoEscuroAnimada.gif';
 import '../styles/menu.css';
 
@@ -17,25 +17,20 @@ import EditarProdutos from '../pages/produtos/EditarProdutos';
 import ListarProdutos from '../pages/produtos/ListarProdutos';
 import Produtos from '../pages/produtos/Produtos';
 import CadastroUsuario from '../pages/usuario/CadastroUsuario';
+import EditarUsuario from '../pages/usuario/EditarUsuario';
+import ListarUsuario from '../pages/usuario/ListarUsuario';
+import Carrinho from '../pages/vendas/Carrinho';
 
 function Menu() {
 
-    // const navigate = useNavigate();
-    const [search, setSearch] = useState('')
 
-    function handleSearch() {
-
-        if (search === '') {
-            alert(` Procure por algo `);
-        }
-
-    }
 
     //função para abrir o dropdown
     function showDropdown() {
         document.getElementById("myDropdown").classList.toggle("show");
     }
 
+    //#region 
     //fecha o dropdown menu quando o usuario clica em outro lugar
     window.onclick = function (event) {
         if (!event.target.matches('.dropBtn')) {
@@ -52,25 +47,21 @@ function Menu() {
             }
         }
     }
+    //#endregion
 
-
-    // const logout = (e) => {
-    //     // 
-    //     localStorage.clear();
-    //     window.location.reload(false);
-
-    // }
-
+    //#region logout
     function logout() {
         // navigate('/main');
         localStorage.clear();
 
         setTimeout(() => {
             window.location.reload(false);
-        }, 500);
+        }, 300);
 
 
     }
+
+    //#endregion
 
     return (
         <Router>
@@ -83,20 +74,48 @@ function Menu() {
                         </li>
 
                         <div className='dropdownContent' id='myDropdown'>
-                            <li >
-                                <Link to={'/'}>Início</Link>
-                            </li>
-                            <li >
-                                <Link to={'/produtos'}>Produtos</Link>
-                            </li>
+
+
+                            {
+                                localStorage.getItem("username", "123") && localStorage.getItem("password") === "123" ?
+
+                                    <li >
+                                        <Link to={'/listarProdutos'}>Produtos e Fornecedores</Link>
+                                        <Link to={'/listarUsuario'}>Gerenciar Usuários</Link>
+                                        <Link to={'/produtos'}>Produtos</Link>
+                                    </li>
+                                    :
+                                    <li >
+                                        <Link to={'/'}>Início</Link>
+                                    </li>
+                            }
+
+
+
+                            {
+                                localStorage.getItem("username", "clien") && localStorage.getItem("password") === "clien" ?
+                                    <li >
+                                        <Link to={'/produtos'}>Produtos</Link>
+                                    </li>
+                                    :
+                                    <li >
+                                        {/* <Link to={'/produtos'}>Início</Link> */}
+                                    </li>
+                            }
 
                             <div className='dropdownContentBtns' >
 
-                                {localStorage.getItem("username") !== null && localStorage.getItem("password") !== null ?
-                                    <Link to={'/main'} onClick={logout} id='loginBtn' >SAIR</Link> :
-                                    <Link to={'/login'} id='loginBtn'>LOGIN</Link>}
+                                {
+                                    localStorage.getItem("username") !== null && localStorage.getItem("password") !== null ?
+                                        <Link to={'/main'} onClick={logout} id='loginBtn' >SAIR</Link> :
+                                        <>
+                                            <Link to={'/login'} id='loginBtn'>LOGIN</Link>
+                                            <Link to={'/cadastro'} id='cadastroBtn' >CADASTRO</Link>
+                                        </>
 
-                                <Link to={'/cadastro'} id='cadastroBtn' >CADASTRO</Link>
+                                }
+
+
 
                             </div>
                         </div>
@@ -106,31 +125,40 @@ function Menu() {
 
                 <div id='conteudosMenu'>
                     <div className='conteudoMenu0'>
-                        <Link to={'/'}><img src={logoAnimada} alt='' /></Link>
+                        <Link to={'/produtos'}><img src={logoAnimada} alt='' /></Link>
                     </div>
 
                     <div className='conteudoMenu1'>
-                        <form>
-                            <input placeholder='Busque aqui' type={'search'}
-                                value={search} onChange={(event) => setSearch(event.target.value)} />
-                            <button id='btnSearch' onClick={handleSearch} ><FaSearch /></button>
-                        </form>
+
                     </div>
 
                     <div className='conteudoMenu2'>
 
-                        {localStorage.getItem("username") !== null && localStorage.getItem("password") !== null ?
-                            <>  <Link to={'/main'} onClick={logout} id='FaUserBtn' ><FaSignOutAlt /> SAIR</Link></> :
-
-                            <> <FaUser /><Link to={'/login'} id='FaUserBtn' >Login</Link>  </>
+                        {
+                            localStorage.getItem("username") !== null && localStorage.getItem("password") !== null ?
+                                <>
+                                    <Link to={'/main'} onClick={logout} id='FaUserBtn' ><FaSignOutAlt /> SAIR</Link>
+                                </>
+                                :
+                                <>
+                                    <FaUser /><Link to={'/login'} id='FaUserBtn' >Login</Link>
+                                    <Link to={'/cadastro'} id='cadastroBtnmenu'>Cadastro</Link>
+                                </>
                         }
 
+                        {
+                            localStorage.getItem("username", "clien") && localStorage.getItem("password") === "clien" ?
+                                <>
+                                    <Link to={'/carrinho'} id='Facart'><FaCartPlus /></Link>
+                                </>
+                                :
+                                <>
 
+                                </>
+                        }
 
-
-                        <Link to={'/cadastro'} id='cadastroBtnmenu'>Cadastro</Link>
                         {/* <Link to={''} id='Faheadsetbtn'><FaHeadset /></Link>
-                        <Link to={'/produtos'} id='Facart'><FaCartPlus /></Link> */}
+                        //  */}
 
                     </div>
                 </div>
@@ -149,6 +177,9 @@ function Menu() {
                 <Route path='/listarFornecedor' element={<ListarFornecedor />} />
                 <Route path='/editarProdutos/:id' element={<EditarProdutos />} />
                 <Route path='/editarFornecedor/:cnpj_fornecedor' element={<EditarFornecedor />} />
+                <Route path='/listarUsuario' element={<ListarUsuario />} />
+                <Route path='/editarUsuario/:cpfUsuario:codEmpresa' element={<EditarUsuario />} />
+                <Route path='/carrinho' element={<Carrinho />} />
             </Routes>
 
         </Router >
