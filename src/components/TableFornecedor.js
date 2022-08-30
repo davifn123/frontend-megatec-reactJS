@@ -79,7 +79,7 @@ function TableFornecedor() {
                                     <td> {post.nome_fornecedor} </td>
                                     <td> {post.email_fornecedor} </td>
                                     <td> {post.fone_fornecedor} </td>
-                                    <td>
+                                    <td className="buttons">
                                         <button onClick={() => editarFornecedor(post.cnpj_fornecedor)} id='editarbtn'> EDITAR </button>
                                         <button onClick={() => deletarFornecedor(post.cnpj_fornecedor)} id='deletarbtn'> EXCLUIR </button>
                                     </td>

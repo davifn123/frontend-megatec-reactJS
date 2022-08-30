@@ -1,7 +1,12 @@
+div.tableMain {
+  display: flex;
+  margin: auto;
+}
+
 table.tableContent {
   border-collapse: collapse;
-  max-width: 100%;
-  margin: auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 th {
@@ -16,7 +21,12 @@ td {
   border-bottom: 1px solid #ddd;
 }
 
-tr:hover {
+td.buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+tbody:hover {
   background-color: var(--azulSecundario);
   transform: scale(1.005);
   transition: all 0.1s;
@@ -54,4 +64,19 @@ tr:hover {
   border-radius: 10px;
   transition: all 0.1s;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 650px) {
+  .tableMain {
+    width: 94%;
+  }
+
+  thead {
+    display: none;
+  }
+  tbody td {
+    display: flex;
+    flex-direction: column;
+    margin: 7px 0;
+  }
 }

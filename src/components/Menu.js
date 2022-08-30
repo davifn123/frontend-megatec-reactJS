@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
+import useAuth from '../hooks/AuthHook/useAuth';
 
 // importação de estilos e imagens
 import { FaBars, FaCartPlus, FaSignOutAlt, FaUser } from 'react-icons/fa';
@@ -22,6 +23,7 @@ import ListarUsuario from '../pages/usuario/ListarUsuario';
 import Carrinho from '../pages/vendas/Carrinho';
 
 function Menu() {
+
 
 
 
@@ -49,17 +51,32 @@ function Menu() {
     }
     //#endregion
 
-    //#region logout
-    function logout() {
-        // navigate('/main');
-        localStorage.clear();
+    //#region private
 
-        setTimeout(() => {
-            window.location.reload(false);
-        }, 300);
+    const Private = ({ Item }) => {
 
+        const { logado } = useAuth();
+
+        return logado > 0 ? <Item /> : <Main />
 
     }
+
+    //#endregion private
+
+
+
+    //#region logout
+    const { logout } = useAuth();
+
+    // function logout() {
+
+    //     localStorage.clear();
+
+    //     setTimeout(() => {
+    //         window.location.reload(false);
+    //     }, 300);
+
+    // }
 
     //#endregion
 
@@ -77,7 +94,7 @@ function Menu() {
 
 
                             {
-                                localStorage.getItem("username", "123") && localStorage.getItem("password") === "123" ?
+                                localStorage.getItem("user_token") !== null ?
 
                                     <li >
                                         <Link to={'/listarProdutos'}>Produtos e Fornecedores</Link>
@@ -93,9 +110,9 @@ function Menu() {
 
 
                             {
-                                localStorage.getItem("username", "clien") && localStorage.getItem("password") === "clien" ?
+                                localStorage.getItem("user_token") !== null ?
                                     <li >
-                                        <Link to={'/produtos'}>Produtos</Link>
+
                                     </li>
                                     :
                                     <li >
@@ -106,8 +123,8 @@ function Menu() {
                             <div className='dropdownContentBtns' >
 
                                 {
-                                    localStorage.getItem("username") !== null && localStorage.getItem("password") !== null ?
-                                        <Link to={'/main'} onClick={logout} id='loginBtn' >SAIR</Link> :
+                                    localStorage.getItem("user_token") !== null ?
+                                        <Link to={'/main'} onClick={() => logout()} id='loginBtn' >SAIR</Link> :
                                         <>
                                             <Link to={'/login'} id='loginBtn'>LOGIN</Link>
                                             <Link to={'/cadastro'} id='cadastroBtn' >CADASTRO</Link>
@@ -135,9 +152,9 @@ function Menu() {
                     <div className='conteudoMenu2'>
 
                         {
-                            localStorage.getItem("username") !== null && localStorage.getItem("password") !== null ?
+                            localStorage.getItem("user_token") !== null ?
                                 <>
-                                    <Link to={'/main'} onClick={logout} id='FaUserBtn' ><FaSignOutAlt /> SAIR</Link>
+                                    <Link to={'/main'} onClick={() => logout()} id='FaUserBtn' ><FaSignOutAlt /> SAIR</Link>
                                 </>
                                 :
                                 <>
@@ -147,7 +164,7 @@ function Menu() {
                         }
 
                         {
-                            localStorage.getItem("username", "clien") && localStorage.getItem("password") === "clien" ?
+                            localStorage.getItem("user_token") !== null ?
                                 <>
                                     <Link to={'/carrinho'} id='Facart'><FaCartPlus /></Link>
                                 </>
@@ -170,16 +187,17 @@ function Menu() {
                 <Route path='/main' element={<Main />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/cadastro" element={<CadastroUsuario />} />
-                <Route path='/produtos' element={<Produtos />} />
-                <Route path='/cadastrarProdutos' element={<CadastrarProdutos />} />
-                <Route path='/listarProdutos' element={<ListarProdutos />} />
-                <Route path='/cadastrarFornecedor' element={<CadastrarFornecedor />} />
-                <Route path='/listarFornecedor' element={<ListarFornecedor />} />
-                <Route path='/editarProdutos/:id' element={<EditarProdutos />} />
-                <Route path='/editarFornecedor/:cnpj_fornecedor' element={<EditarFornecedor />} />
-                <Route path='/listarUsuario' element={<ListarUsuario />} />
-                <Route path='/editarUsuario/:cpfUsuario:codEmpresa' element={<EditarUsuario />} />
-                <Route path='/carrinho' element={<Carrinho />} />
+                <Route path='/produtos' element={<Private Item={Produtos} />} />
+                <Route path='/cadastrarProdutos' element={<Private Item={CadastrarProdutos} />} />
+                <Route path='/listarProdutos' element={<Private Item={ListarProdutos} />} />
+                <Route path='/cadastrarFornecedor' element={<Private Item={CadastrarFornecedor} />} />
+                <Route path='/listarFornecedor' element={<Private Item={ListarFornecedor} />} />
+                <Route path='/editarProdutos/:id' element={<Private Item={EditarProdutos} />} />
+                <Route path='/editarFornecedor/:cnpj_fornecedor' element={<Private Item={EditarFornecedor} />} />
+                <Route path='/listarUsuario' element={<Private Item={ListarUsuario} />} />
+                <Route path='/editarUsuario/:cpfUsuario:codEmpresa' element={<Private Item={EditarUsuario} />} />
+                <Route path='/carrinho' element={<Private Item={Carrinho} />} />
+                <Route path='*' element={<Main />} />
             </Routes>
 
         </Router >

@@ -27,7 +27,7 @@ div.segundoitemcarrinho {
   display: flex;
   flex-direction: column;
   max-width: 900px;
-  width: 90%;
+  width: 100%;
   list-style: none;
   gap: 2rem;
 }
@@ -56,4 +56,15 @@ div.segundoitemcarrinho {
   border-radius: 8px;
   transition: all 0.2s;
   color: #000;
+}
+
+@media (max-width: 650px) {
+  .segundoitemcarrinho ul {
+    width: 95%;
+  }
+
+  .segundoitemcarrinho li {
+    display: flex;
+    flex-direction: column;
+  }
 }

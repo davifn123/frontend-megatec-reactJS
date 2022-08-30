@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/AuthHook/useAuth";
 
 import axios from "axios";
 import { useForm } from 'react-hook-form';
@@ -11,44 +12,57 @@ import '../../styles/cadastro.css';
 
 function CadastroUsuario() {
 
-    var navigate = useNavigate();
+    const navigate = useNavigate();
+    const { signup } = useAuth();
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPass, setConfirmPass] = useState('');
+    const [emailUsuario, setEmailUsuario] = useState('');
+    const [confirmEmail, setConfirmEmail] = useState('');
+    const [senhaUsuario, setSenhaUsuario] = useState('');
     const [cpf, setCpf] = useState('');
     const [nome, setNome] = useState('');
+    const [error, setError] = useState('');
 
-    // function submitCadastro() {
+    const handleSignup = () => {
 
-    //     if (nome === '' || email === '' || password === '' || confirmPass === '' || confirmPass !== password || cpf === '') {
-    //         alert('CADASTRO INVÁLIDO');
-    //     } else {
-    //         alert('CADASTRO EFETUADO!');
-    //         navigate('/login');
-    //     }
-    //     if (confirmPass !== password) {
-    //         alert('Senha de confirmação deve ser igual');
-    //     }
+        if (!emailUsuario | !confirmEmail | !senhaUsuario | !cpf | !nome) {
+            setError('Preencha todos os campos');
+            return;
+        } else if (emailUsuario !== confirmEmail) {
+            setError('Os emails não conferem!');
+            return;
+        }
 
-    // }
+        const res = signup(emailUsuario, senhaUsuario);
+
+        if (res) {
+            setError(res);
+            return;
+        }
+
+        alert("Cadastrado com sucesso!")
+        navigate('/login');
+    }
+
+
+
+
 
     // eslint-disable-next-line
     const { register, handleSubmit, formState: { errors } } = useForm();
 
+
+
     //#region post
     const addPost = data => axios.post("https://megatec-store.herokuapp.com/api/usuarios", data)
         .then(() => {
-            alert("Cadastrado com sucesso!")
-            navigate('/login');
+
         })
-        .catch(() => {
-            if (confirmPass !== password) {
-                alert('Senha de confirmação deve ser igual');
-            }
-            alert("Erro ao cadastrar!")
+        .catch((err) => {
+            alert("Erro ao cadastrar!", err)
         })
     //#endregion post
+
+
 
     return (
         <div className="containerCadastro">
@@ -79,25 +93,27 @@ function CadastroUsuario() {
                         </div>
                         <div className="input-container">
 
-                            <input type="email" name="email" {...register("emailUsuario")} placeholder="E-mail"
-                                value={email} onChange={(e) => setEmail(e.target.value)} required />
+                            <input type="email" name="emailUsuario" placeholder="E-mail"
+                                value={emailUsuario} onChange={(e) => [setEmailUsuario(e.target.value), setError('')]} required />
 
                         </div>
                         <div className="input-container">
 
-                            <input type="password" name="password" placeholder="Crie sua senha"
-                                value={password} onChange={(e) => setPassword(e.target.value)} required />
+                            <input type="email" name="confirmEmail" {...register("emailUsuario")} placeholder="Confirme seu E-mail"
+                                value={confirmEmail} onChange={(e) => [setConfirmEmail(e.target.value), setError('')]} required />
 
                         </div>
                         <div className="input-container">
 
-                            <input type="password" name="password" {...register("senhaUsuario")} placeholder="Confirme sua senha"
-                                value={confirmPass} onChange={(e) => setConfirmPass(e.target.value)} required />
+                            <input type="password" name="senhaUsuario" {...register("senhaUsuario")} placeholder="Senha"
+                                value={senhaUsuario} onChange={(e) => [setSenhaUsuario(e.target.value), setError('')]} required />
 
                         </div>
-
+                        <div className="error">
+                            {error}
+                        </div>
                         <div className="button-container">
-                            <button type="submit" >Cadastrar</button>
+                            <button type="submit" onClick={handleSignup} >Cadastrar</button>
                         </div>
 
                     </form>

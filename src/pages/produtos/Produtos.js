@@ -17,26 +17,6 @@ import '../../styles/produtos.css';
 function Produtos() {
 
 
-    //#region dropdown
-    // function showDropdown() {
-    //     document.getElementById("myDropdown").classList.toggle("show");
-    // }
-    // window.onclick = function (event) {
-    //     if (!event.target.matches('.dropBtn')) {
-
-    //         var dropdowns = document.getElementsByClassName("dropdownContent");
-
-    //         for (var i = 0; i < dropdowns.length; i++) {
-
-    //             var openDropdown = dropdowns[i];
-
-    //             if (openDropdown.classList.contains('show')) {
-    //                 openDropdown.classList.remove('show');
-    //             }
-    //         }
-    //     }
-    // }
-    //#endregion dropdown
 
     //#region get todos produtos
     const [posts, setPosts] = useState([]);
@@ -59,23 +39,6 @@ function Produtos() {
 
             <div className="primeiroItemProdutos">
                 <HeaderCarrinhoVendas />
-
-                {/* <div className="dropdown">
-
-                    <ul>
-
-                        <li>
-                            <button onClick={'showDropdown'} id='Facart'><FaCartPlus /></button>
-                        </li>
-
-                        <div className="dropdownContent" id="myDropdown" >
-
-
-                        </div>
-
-                    </ul>
-
-                </div> */}
 
                 <h1>Produtos</h1>
             </div>

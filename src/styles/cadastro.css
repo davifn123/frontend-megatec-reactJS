@@ -36,6 +36,14 @@ div.cadastroForm {
   border-radius: 8px;
 }
 
+div.error {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  font-size: 14px;
+  color: rgb(255, 0, 0);
+}
+
 .button-container {
   display: flex;
   justify-content: center;
