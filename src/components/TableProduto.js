@@ -94,7 +94,7 @@ function TableProduto() {
                                     <td> {`R$ ${post.valor_produto}`}</td>
                                     <td> {post.obs_produto} </td>
                                     <td> {post.cnpj_fornecedor} </td>
-                                    <td>
+                                    <td className="buttons">
                                         <button onClick={() => editarProduto(post.id)} id='editarbtn'> EDITAR </button>
                                         <button onClick={() => deletarProduto(post.id)} id='deletarbtn'> EXCLUIR </button>
                                     </td>
