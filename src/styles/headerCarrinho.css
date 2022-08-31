@@ -125,7 +125,7 @@ button#removerItemCarrbtn:hover {
 
 @media (max-width: 650px) {
   header.carrinhoVendasTop {
-    margin-top: 112px;
+    margin-top: 0px;
   }
   nav.carrinhoVendasNav {
     display: flex;

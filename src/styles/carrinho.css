@@ -59,6 +59,13 @@ div.segundoitemcarrinho {
 }
 
 @media (max-width: 650px) {
+  div.containerCarrinho {
+    margin-top: 80px;
+  }
+
+  div.primeiroitemcarrinho {
+    top: 8px;
+  }
   .segundoitemcarrinho ul {
     width: 95%;
   }

@@ -173,13 +173,13 @@ div.conteudoMenu0 img {
 
 @media (max-width: 650px) {
   .menu {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
   }
   .dropdownContent {
     min-width: 200px;
   }
   div #conteudosMenu {
-    flex-direction: column;
     font-size: 10px;
   }
   .conteudoMenu1 {
@@ -187,5 +187,6 @@ div.conteudoMenu0 img {
   }
   .conteudoMenu2 {
     padding-bottom: 10px;
+    font-size: 15px;
   }
 }
