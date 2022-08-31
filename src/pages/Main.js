@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 // import { FaPlus } from "react-icons/fa";
 // import { Link } from "react-router-dom";
 
@@ -14,6 +15,11 @@ import '../styles/main.css';
 
 function Main() {
 
+    const navigate = useNavigate();
+
+    function buttonMainCadastro() {
+        navigate('/cadastro');
+    }
 
     return (
 
@@ -25,8 +31,9 @@ function Main() {
 
             <div className="segundoItemMain">
 
-
                 <h2>Faça login para continuar</h2>
+
+                <button type="button" id="buttoncadastromain" onClick={buttonMainCadastro}> CADASTRO </button>
             </div>
 
         </div>
