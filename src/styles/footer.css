@@ -36,6 +36,16 @@
   #footer {
     margin-top: 140px;
     display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+  #footer img {
+    max-width: 100%;
+    width: 50px;
+    padding: 10px;
+  }
+
+  #infosFooter {
+    font-size: 13px;
   }
 }
 
