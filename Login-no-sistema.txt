@@ -1,9 +1,0 @@
-entrar no sistema como Administrador
-
-user: 123
-senha: 123
-
-entrar no sistema como Cliente
-
-user: clien
-senha: clien
